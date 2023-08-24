@@ -13,17 +13,24 @@ const Palaute = (props) => {
 }
 
 const Statistiikat = (props) => {
-  return (
-    <div>
-      <h1>Statistiikat</h1>
-      <p>Hyvä palaute: {props.good}</p>
-      <p>Neutraali palaute: {props.neutral}</p>
-      <p>Huono palaute: {props.bad}</p>
-      <p>Palaute yhteensä: {props.good + props.bad + props.neutral}</p>
-      <p>Keskiverto: {(props.good*1 + props.neutral*0 + props.bad*-1)/(props.good + props.bad + props.neutral)}</p>
-      <p>Positiivinen: {props.good/(props.good + props.bad + props.neutral)*100}%</p>
-    </div>   
-  )
+  if(props.good == 0 && props.bad == 0 && props.neutral == 0) {
+    return (
+      <p>Ei palautetta vielä</p>
+    )
+  } else {
+      return (
+        <div>
+          <h1>Statistiikat</h1>
+          <p>Hyvä palaute: {props.good}</p>
+          <p>Neutraali palaute: {props.neutral}</p>
+          <p>Huono palaute: {props.bad}</p>
+          <p>Palaute yhteensä: {props.good + props.bad + props.neutral}</p>
+          <p>Keskiverto: {(props.good*1 + props.neutral*0 + props.bad*-1)/(props.good + props.bad + props.neutral)}</p>
+          <p>Positiivinen: {props.good/(props.good + props.bad + props.neutral)*100}%</p>
+        </div>   
+      )
+  }
+  
 }
 
 const App = () => {
