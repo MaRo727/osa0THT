@@ -19,6 +19,9 @@ const Statistiikat = (props) => {
       <p>Hyvä palaute: {props.good}</p>
       <p>Neutraali palaute: {props.neutral}</p>
       <p>Huono palaute: {props.bad}</p>
+      <p>Palaute yhteensä: {props.good + props.bad + props.neutral}</p>
+      <p>Keskiverto: {(props.good*1 + props.neutral*0 + props.bad*-1)/(props.good + props.bad + props.neutral)}</p>
+      <p>Positiivinen: {props.good/(props.good + props.bad + props.neutral)*100}%</p>
     </div>   
   )
 }
@@ -37,6 +40,7 @@ const App = () => {
   const handleBad = () => {
     setBad(bad + 1)
   }
+
 
   return (
     <div>
