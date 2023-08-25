@@ -8,10 +8,23 @@ const StatisticButton = (props) => {
 const Palaute = (props) => {
   return (
     <div>
-      <h1>Palaute</h1>
-      <StatisticButton jarkko={props.handleGood} teksti="Hyvä"/>
-      <StatisticButton jarkko={props.handleNeutral} teksti="Neutraali"/>
-      <StatisticButton jarkko={props.handleBad} teksti="Huono"/>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <h1>Palaute</h1>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <StatisticButton jarkko={props.handleGood} teksti="Hyvä"/>
+              <StatisticButton jarkko={props.handleNeutral} teksti="Neutraali"/>
+              <StatisticButton jarkko={props.handleBad} teksti="Huono"/>
+            </td>
+          </tr>          
+        </tbody>
+
+      </table>
     </div>
     
   )
@@ -19,7 +32,15 @@ const Palaute = (props) => {
 const StatisticLine = (props) => {
   return (
     <div>
-      <p>{props.a + props.b}</p>
+      <p>{props.a}</p>
+    </div>
+  )
+}
+
+const StatisticLineB = (props) => {
+  return (
+    <div>
+      <p>{props.b}</p>
     </div>
   )
 }
@@ -31,17 +52,66 @@ const Statistiikat = (props) => {
   } else {
       return (
         <div>
-          <h1>Statistiikat</h1>
-          <StatisticLine a={"Hyvä palaute: "} b={props.good}/>
-          <StatisticLine a={"Neutraali palaute: "} b={props.neutral}/>
-          <StatisticLine a={"Huono palaute: "} b={props.bad}/>
-          <StatisticLine a={"Palaute yhteensä: "} b={props.good + props.bad + props.neutral}/>
-          <StatisticLine a={"Positiivinen: "} b={(props.good*1 + props.neutral*0 + props.bad*-1)/(props.good + props.bad + props.neutral)}/>
-          <StatisticLine a={"Keskiverto: "} b={props.good/(props.good + props.bad + props.neutral)*100}/>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <h1>Statistiikat</h1>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <StatisticLine a={"Hyvä palaute: "}/> 
+                </td>
+                <td>
+                  <StatisticLineB b={props.good}/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <StatisticLine a={"Neutraali palaute: "}/>
+                </td>
+                <td>
+                  <StatisticLineB b={props.neutral}/>
+                </td>
+              </tr>
+               <tr>
+                <td>
+                <StatisticLine a={"Huono palaute: "}/>
+                </td>
+                <td>
+                <StatisticLineB b={props.bad}/>
+                </td>
+               </tr>
+               <tr>
+                <td>
+                <StatisticLine a={"Palaute yhteensä: "}/>
+                </td>
+                <td>
+                <StatisticLineB b={props.good + props.bad + props.neutral}/>
+                </td>
+               </tr>
+               <tr>
+                <td>
+                <StatisticLine a={"Positiivinen: "}/>
+                </td>
+                <td>
+                <StatisticLineB b={(props.good*1 + props.neutral*0 + props.bad*-1)/(props.good + props.bad + props.neutral)}/>
+                </td>
+               </tr>
+                <tr>
+                  <td>
+                  <StatisticLine a={"Keskiverto: "}/>
+                  </td>
+                  <td>
+                  <StatisticLineB b={props.good/(props.good + props.bad + props.neutral)*100}/>
+                  </td>
+                </tr>
+               
+            </tbody> 
+          </table>
         </div>   
       )
-     
-      // <StatisticLine text="good" value ={...} />
   }
   
 }
