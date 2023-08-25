@@ -12,67 +12,17 @@ const App = () => {
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when dianosing patients.',
     'The only way to go fast, is to go well.'
   ]
-  
-
+   
   const [selected, setSelected] = useState(0)
-
-  const [votes, setVotes] = useState(new Uint8Array(anecdotes.length));
-
-  const [position, setPosition] = useState(0)
-
-  const [aaniMaara, setAaniMaara] = useState(0)
-
-
-
   const nappi = () => {
-    const numero = Math.floor((Math.random() * anecdotes.length) + 0)
+    const numero = Math.floor(Math.random() * anecdotes.length)
     setSelected(numero)
-    isoin()
+    console.log(numero)
   }
-  const aanestys = () => {
-    const newVotes = [...votes]
-    newVotes[selected] += 1
-    setVotes(newVotes)
-    isoin()
-  }
-
-  const isoin = () => {
-    let largest = votes[0];
-    let pos = 0;
-    
-    for(let i = 0; i < votes.length; i++){
-      if(votes[i] === 0){
-        if(votes[i] > largest){
-          largest = votes[i];
-          pos = i;
-        }
-      }else{
-        if(votes[i] > largest -1){
-          largest = votes[i];
-          pos = i;
-        }
-      }
-    }
-
-
-  setPosition(pos)
-  setAaniMaara(largest)
-  console.log(aaniMaara , pos)
-}
   return (
     <div>
+      <button onClick={nappi}>Joujou</button> <br />
       {anecdotes[selected]}
-      {/* {eniten[selected]} */}
-      <br/>
-      <button onClick={aanestys}>Äänestä</button> <br />
-      <button onClick={nappi}>Seuraava</button> <br />
-      { "Ääniä on: " + votes[selected]} <br />
-      <br/>
-      <h1>most votes: </h1>
-      {anecdotes[position] + " with :"}
-      <br />
-      <p><b>{votes[selected] === aaniMaara + 1? votes[selected] : aaniMaara}</b> votes! </p>
-
     </div>
   )
 }
